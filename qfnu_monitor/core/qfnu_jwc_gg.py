@@ -125,7 +125,10 @@ class QFNUJWCGGMonitor:
         for i, notice in enumerate(new_notices, 1):
             content += f"【{i}】{notice['title']}\n"
             content += f"📅 {notice['date']}\n"
-            content += f"🔗 {notice['link']}\n\n"
+            if i == len(new_notices):
+                content += f"🔗 {notice['link']}"
+            else:
+                content += f"🔗 {notice['link']}\n\n"
 
         feishu(title, content)
 
@@ -140,7 +143,10 @@ class QFNUJWCGGMonitor:
         for i, notice in enumerate(new_notices, 1):
             message += f"【{i}】{notice['title']}\n"
             message += f"📅 {notice['date']}\n"
-            message += f"🔗 {notice['link']}\n\n"
+            if i == len(new_notices):
+                message += f"🔗 {notice['link']}"
+            else:
+                message += f"🔗 {notice['link']}\n\n"
 
         # 发送到所有配置的群组
         result = onebot_send_all(message)
