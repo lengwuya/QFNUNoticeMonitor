@@ -105,7 +105,7 @@ class OneBotSender:
             response = requests.post(
                 api_url, headers=headers, data=json.dumps(data), timeout=10
             )
-
+            logging.info(f"OneBot消息发送响应: {response.text}")
             result = response.json()
 
             if result.get("status") == "ok":
